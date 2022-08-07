@@ -13,6 +13,7 @@
     xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/5.0.0"
     xmlns:org.polarsys.capella.core.data.information.datatype="http://www.polarsys.org/capella/core/information/datatype/5.0.0"
     xmlns:org.polarsys.capella.core.data.information.datavalue="http://www.polarsys.org/capella/core/information/datavalue/5.0.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/5.0.0"
     xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/5.0.0"
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/5.0.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/5.0.0"
@@ -46,7 +47,79 @@
             id="43c70855-b3a3-4896-bc8f-eed573932fa8" name="Root Operational Activity"/>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg"
-          id="1576dbd5-f271-4f7a-aa19-76736d5198d9" name="Operational Capabilities"/>
+          id="1576dbd5-f271-4f7a-aa19-76736d5198d9" name="Operational Capabilities">
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="3cfe4bd1-87b3-42bb-a715-974efa7ff5cd" name="Create book" summary="Books acts as Collection for data. User can create a Book in order to place his translated vocabulary into that collection.">
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="a5bfe465-c40f-4881-bb31-f7b68da7c0a6" extended="#ec0d99f2-a247-430b-b56c-a45308d93518"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="e729dae4-6d81-4609-996c-eb97f50c15fe" name="Let app translate word"
+            summary="Inside Book User can input a foreign he met. And a few translation contexts will be shown.">
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="6d6cc63d-313e-439e-ad42-b056c537903c" extended="#53148930-ec24-45f3-8815-4bf9477b5783"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="116a4825-f6ba-46dc-9027-30e6338ce061" name="Inspect vocabulary" summary="User can refresh all learned vocabulary from all books. And trigger options like the way of sorting or searching for certain ones. Or inspecting those from a certain book.">
+          <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
+              id="42b81056-20f9-4d67-aeb9-759647189fd8" involved="#d55c1cf0-7195-43b8-974e-0048613b947d"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="ec0d99f2-a247-430b-b56c-a45308d93518" name="Observe library" summary="Should look like a bookcase, which is infinite extensible. Books are sorted to provide a nice view.">
+          <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
+              id="7e580b93-aa02-4d04-b5d6-80d6e722e8b1" involved="#d55c1cf0-7195-43b8-974e-0048613b947d"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="53148930-ec24-45f3-8815-4bf9477b5783" name="Open Book" summary="Shows all vocabulary of that book. and new ones can be created/translated.">
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="f7259b89-4638-44ac-8835-89395418f33b" extended="#ec0d99f2-a247-430b-b56c-a45308d93518"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="1eff9bd6-5e38-4c7f-b14a-85e9ce97b340" name="Export vocabulary" summary="To have an workable output with the learned vocabularies, they can be exported in suitable formats.">
+          <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
+              id="f56adc53-8640-4093-ab7e-41094cd732e6" involved="#d55c1cf0-7195-43b8-974e-0048613b947d"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="e0e77052-a791-43f9-a0ab-1628edf018fd" name="Define details about book"
+            summary="Title, cover, color, size, pages, languages,author, genre.">
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="17363702-f2ce-4b39-9a7d-e8afe99deaad" extended="#3cfe4bd1-87b3-42bb-a715-974efa7ff5cd"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="cfa6cca1-0e67-4e1f-ba92-e83cc0954b6a" name="Remove Book" summary="User wants to get rid of it. User has option to put the tranlated vocabulary out of that into archiv.">
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="df6f8298-04da-4a61-b726-ef391951b48f" extended="#ec0d99f2-a247-430b-b56c-a45308d93518"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="5c86fe56-2b50-4edf-b814-1661f1fa2fd4" name="Provide vocabulary in text form"
+            summary="">
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="2741af18-c8e7-4113-8f94-1320064b4530" extended="#e729dae4-6d81-4609-996c-eb97f50c15fe"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="25259a16-5abc-455d-9e61-5af00fd30630" name="Provide vocabulary in voice form">
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="94bd0a65-628a-4832-90da-3c01eda67998" extended="#e729dae4-6d81-4609-996c-eb97f50c15fe"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="3fe8bac4-36d0-4b20-8c93-b94f50056299" name="Confirm convenient tranlation"
+            summary="When user get right translation he can confirm it with ui in order to save it to collection.">
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="957fc6ae-c6b7-4747-b4de-c8aa0734b4a4" extended="#25259a16-5abc-455d-9e61-5af00fd30630"/>
+          <extends xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend"
+              id="e3aee231-d96d-48af-b478-6cea4821ebb3" extended="#5c86fe56-2b50-4edf-b814-1661f1fa2fd4"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="170df6aa-e0be-4c7d-b22c-36141ca90680" name="Adjust settings" summary="Like name, languages.">
+          <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
+              id="856bef7b-bf13-4330-bb1d-ea2be7e8e091" involved="#d55c1cf0-7195-43b8-974e-0048613b947d"/>
+        </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="42dbcd03-8e31-4df5-ba77-af5ecd74471c" name="Provide Feedback" summary="App asks him to provide feedback.">
+          <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
+              id="93e6c2ff-81a4-4aa4-ac66-099d5484d435" involved="#d55c1cf0-7195-43b8-974e-0048613b947d"/>
+        </ownedOperationalCapabilities>
+      </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="1fc08d0b-7d09-4ff5-b3e6-374d0306231a" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
@@ -54,7 +127,16 @@
       <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="409dc76e-3b20-4133-81c1-6d431c9e09c6"
           name="Roles"/>
       <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="ef117b9e-f31f-4e7d-807d-6ed354ab8e59"
-          name="Operational Entities"/>
+          name="Operational Entities">
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="6a59b102-ff34-47f1-a7b3-8618cebc6b63"
+            name="App" abstractType="#52f0e4a0-e2a3-4f5d-b61a-821ec61f5484"/>
+        <ownedParts xsi:type="org.polarsys.capella.core.data.cs:Part" id="d642e5e8-1bc3-4892-b8db-a8061456c17c"
+            name="User" abstractType="#d55c1cf0-7195-43b8-974e-0048613b947d"/>
+        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="52f0e4a0-e2a3-4f5d-b61a-821ec61f5484"
+            name="App" summary="Is for Android and IOS."/>
+        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="d55c1cf0-7195-43b8-974e-0048613b947d"
+            name="User" actor="true" human="true"/>
+      </ownedEntityPkg>
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis"
         id="78221ca9-076c-456f-989f-75e6a77537b8" name="System Analysis">
